@@ -1,0 +1,8 @@
+<h3 style=" direction: rtl;"> اتريد مسح محاضرة <span style="color: red;">{{data.lectureName}}</span> للطالب <span
+  style="color: red;">{{data.studentName}}</span>؟</h3>
+<div class="confirmation-dialog" mat-dialog-content>
+  <div class="buttons" mat-dialog-actions>
+    <button class="cancel-button" mat-button mat-dialog-close (click)="Cancel()">الالغاء</button>
+    <button class="confirm-button" mat-button (click)="Confrim()">تاكيد</button>
+  </div>
+</div>

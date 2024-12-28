@@ -1,0 +1,81 @@
+.container {
+  margin: 0 auto;
+}
+
+.login-form {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+input {
+  width: auto;
+  margin: 10px 20px;
+}
+
+button {
+  color: #fff;
+  padding: 15px;
+  font-size: larger;
+  margin: 15px auto;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid var(--orange);
+  background: transparent;
+  background-color: var(--main-font-color);
+  color: #fff;
+}
+
+mat-spinner {
+  color: #fff;
+  font-size: larger;
+  margin: 15px auto;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+  // background-color: var(--prime);
+  color: #fff;
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 100%;
+  }
+}
+
+small {
+  color: red;
+}
+
+
+.remember-label {
+  display: inline-block;
+  margin-right: 10px;
+  /* Adjust this value for your desired spacing */
+}
+
+.card {
+  border: 2px solid var(--prime);
+  background: var(--prime);
+
+}
+
+.card-header h1 {
+  text-align: center;
+}
+
+
+.background {
+  background-image: url(../../assets/background.jpg);
+  height: 100%;
+  top: 0;
+  position: absolute;
+  width: 100%;
+}

@@ -1,0 +1,126 @@
+<!-- <div class="total">
+  <h1 mat-dialog-title> اضافة واجب جديد</h1>
+  <div class="edit-form" mat-dialog-content>
+    <form [formGroup]="AssigmentForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">الاسم</label>
+        <input id="name" name="name" formControlName="name" type="text" required>
+      </div>
+      <div class="form-group">
+        <label for="degree">الدرجة</label>
+        <input id="degree" name="degree" formControlName="degree" type="number" required>
+      </div>
+      <div class="form-group">
+        <label for="examDuration">المدة</label>
+        <input id="examDuration" name="examDuration" formControlName="examDuration" type="number" required>
+      </div>
+      <div class="form-group">
+        <label for="examOpenDate">البداية</label>
+        <input id="examOpenDate" name="examOpenDate" formControlName="examOpenDate" type="datetime-local" required>
+      </div>
+      <div class="form-group">
+        <label for="examCloseDate">الانتهاء</label>
+        <input id="examCloseDate" name="examCloseDate" formControlName="examCloseDate" type="datetime-local" required>
+      </div>
+      <div class="form-group">
+        <label for="lectureID">اضافة الي محاضرة</label>
+        <select formControlName="lectureID">
+          <option *ngFor="let item of AllLectures" [value]="item.id">{{item.name}}</option>
+        </select>
+      </div>
+      <div class="button-group" mat-dialog-actions>
+        <button type="button" class="cancel-button" mat-button mat-dialog-close (click)="onNoClick()">خروج</button>
+        <button type="submit" class="save-button" mat-button>حفظ</button>
+      </div>
+    </form>
+  </div>
+</div> -->
+<div class="container add">
+  <h1 mat-dialog-title>اضافة واجب </h1>
+  <div class="container mt-5">
+    <form [formGroup]="AssigmentForm" mat-dialog-content enctype="multipart/form-data" mat-dialog-content>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="input1" class="form-label">الاسم</label>
+            <input type="text" class="form-control" id="input1" name="name" formControlName="name" required>
+            <div class="form-group">
+              <div *ngIf="AssigmentForm.controls['name']?.touched  && AssigmentForm.controls['name']?.invalid"
+                class="text-danger">
+                ادخل الاسم
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">الدرجة</label>
+            <input type="number" class="form-control" id="input1" name="name" formControlName="degree" required>
+            <div class="form-group">
+              <div *ngIf="AssigmentForm.controls['degree']?.touched  && AssigmentForm.controls['degree']?.invalid"
+                class="text-danger">
+                ادخل الدرجة
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">المدة</label>
+            <input type="number" class="form-control" id="input1" name="name" formControlName="examDuration" required>
+            <div class="form-group">
+              <div *ngIf="AssigmentForm.controls['examDuration']?.touched  && AssigmentForm.controls['examDuration']?.invalid"
+                class="text-danger">
+                ادخل المدة
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">بدا الامتحان الصغير</label>
+            <input  class="form-control" id="input1" type="datetime-local" name="name" formControlName="examOpenDate" required>
+            <div class="form-group">
+              <div *ngIf="AssigmentForm.controls['examOpenDate']?.touched  && AssigmentForm.controls['examOpenDate']?.invalid"
+                class="text-danger">
+                ادخل الامتحان الصغير
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">انتهاء الامتحان الصغير</label>
+            <input  class="form-control" id="input1" type="datetime-local" name="name" formControlName="examCloseDate" required>
+            <div class="form-group">
+              <div *ngIf="AssigmentForm.controls['examCloseDate']?.touched  && AssigmentForm.controls['examCloseDate']?.invalid"
+                class="text-danger">
+                انتهاء الامتحان الصغير
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="input3" class="form-label">المحاضرة السابقة</label>
+            <select formControlName="lectureID" class="form-control" id="input3">
+              <option value=" ">لا شئ</option>
+              <option *ngFor="let item of AllLectures" [value]="item.id">{{item.name}}</option>
+            </select>
+            <div class="form-group">
+              <div *ngIf="AssigmentForm.controls['lectureID']?.touched  && AssigmentForm.controls['lectureID']?.invalid"
+                class="text-danger">
+                ادخل المحاضرة
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-3 btnConCam d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary mx-3 " (click)="onSubmit()">حفظ</button>
+        <button type="submit" class="btn btn-danger mx-3 " (click)="onNoClick()">خروج</button>
+      </div>
+
+    </form>
+  </div>
+</div>

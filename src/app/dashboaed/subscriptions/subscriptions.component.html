@@ -1,0 +1,108 @@
+<h2> الاشتراكات</h2>
+<div class="content">
+  <div class="above">
+    <div class="search-container download mx-3">
+      <label for="dropdown" class="form-label">تنزيل بحيث الشهر</label>
+      <select class="form-control" id="dropdown" name="drinks" [(ngModel)]="SubjectID">
+        <option value="{{ele?.id}}" *ngFor="let ele of Subjects">{{ele?.name}}</option>
+      </select>
+      <button class="add-button" (click)="Download()">تنزيل البيانات</button>
+    </div>
+  </div>
+  <div class="above">
+
+    <div class="add">
+      <section class="example-section">
+        <label class="example-margin">معلومات عن :</label>
+        <mat-radio-group [(ngModel)]="examples" (change)="change()">
+          <mat-radio-button class="example-margin" value="one">الكل</mat-radio-button>
+          <mat-radio-button class="example-margin" value="two">غير مشترك</mat-radio-button>
+        </mat-radio-group>
+      </section>
+    </div>
+    <div class="search-container">
+      <input type="text" class="form-control" (input)="Empty()" placeholder="اسم الطالب" [(ngModel)]="studentName">
+      <input type="text" class="form-control" (input)="Empty()" placeholder="رقم التيلفون" [(ngModel)]="phone">
+      <button (click)="search()">البحث</button>
+      <button (click)="clear()" class="clear" *ngIf="phone ||studentName">مسح</button>
+    </div>
+
+  </div>
+  <table mat-table [dataSource]="dataSource" class="table">
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>التعديل</th>
+      <td mat-cell *matCellDef="let rowObj">
+        <button type="button" class="save-button" (click)="UpdateElement(rowObj)" [hidden]="rowObj.isActive">
+          <mat-icon>check</mat-icon>
+        </button>
+        <button type="button" class="cancel-button" (click)="DeleteElement(rowObj)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button type="button" class="lock-button" (click)="LockElement(rowObj)" [hidden]="!rowObj.isActive">
+          <mat-icon>lock</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="studentName">
+      <th mat-header-cell *matHeaderCellDef> اسم الطالب </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.studentName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="subjectName">
+      <th mat-header-cell *matHeaderCellDef> الماده </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.subjectName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> التليفون </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.phone}} </td>
+    </ng-container>
+    <ng-container matColumnDef="subscribtionDate">
+      <th mat-header-cell *matHeaderCellDef> موعد الاشتراك </th>
+      <td mat-cell *matCellDef="let rowObj">
+        {{rowObj.subscribtionDate |date:'medium' }} </td>
+    </ng-container>
+    <ng-container matColumnDef="activationDate">
+      <th mat-header-cell *matHeaderCellDef> معاد تاكيد الاشتراك</th>
+      <td mat-cell *matCellDef="let rowObj">
+        {{rowObj.activationDate |date:'medium' }}
+      </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="isActive">
+      <th mat-header-cell *matHeaderCellDef> البريد الالكتروني </th>
+      <td mat-cell *matCellDef="let rowObj">
+        {{rowObj.email }}
+      </td>
+    </ng-container> -->
+    <ng-container matColumnDef="select">
+      <!-- <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="masterToggle()"></mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let rowObj">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="selection.toggle(rowObj)"></mat-checkbox>
+      </td> -->
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+          [checked]="selection.isSelected(row)"></mat-checkbox>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div class="btns" *ngIf="this.selection.selected.length > 0">
+    <button type="button" class="save-button" (click)="Update()">
+      <mat-icon>check</mat-icon>
+    </button>
+    <button type="button" class="cancel-button" (click)="delete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button type="button" class="lock-button" (click)="Lock()">
+      <mat-icon>lock</mat-icon>
+    </button>
+  </div>
+  <mat-paginator [length]="Datasubject?.count" [pageSize]="Datasubject?.size" [pageIndex]="Datasubject?.index"
+    [pageSizeOptions]="[5,10, 20, 50, 100]" (page)="pageChanged($event)">
+  </mat-paginator>
+</div>

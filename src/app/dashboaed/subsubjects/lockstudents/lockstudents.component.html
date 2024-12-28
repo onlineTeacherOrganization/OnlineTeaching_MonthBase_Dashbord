@@ -1,0 +1,23 @@
+<div mat-dialog-content class="lockstudentsubsubject">
+
+  <div class="p-2">
+
+    <h4 mat-dialog-title class="text-right p-2">اتريد غلق الطالب {{StudentName}} ؟</h4>
+    <!-- <p mat-dialog-title>
+      <mat-checkbox [formControl]="disableSelect">اتريد غلق عن اسبوع ؟</mat-checkbox>
+    </p> 
+    <form [formGroup]="FormGroups" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+      
+      <mat-form-field *ngIf="disableSelect.value">
+        <mat-label>اختار الاسبوع</mat-label>
+        <mat-select formControlName="SubSubject">
+          <mat-option value="{{item.id}}" *ngFor="let item of SubSubjects">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>    </form> -->
+    <textarea type="text" [(ngModel)]="resaon" placeholder="السبب" class="form-control" cols="5" rows="3"></textarea>
+    <div class="button-group" mat-dialog-actions>
+      <button type="button" class="cancel-button" mat-button mat-dialog-close (click)="onNoClick()">خروج</button>
+      <button type="submit" class="save-button" mat-button (click)="onSubmit()">حفظ</button>
+    </div>
+  </div>
+</div>

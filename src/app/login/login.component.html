@@ -1,0 +1,77 @@
+<!--
+<div class="container">
+  <div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h1>تسجيل الدخول</h1>
+      <div class="mb-5">
+        <label for="Email" class="form-label">البريد الإلكتروني</label>
+        <input type="email" class="form-control" id="Email" formControlName="email" placeholder="البريد الإلكتروني">
+      </div>
+
+      <div class="mb-5">
+        <label for="password" class="form-label">كلمة المرور</label>
+        <input type="password" class="form-control" id="password" formControlName="password" placeholder="كلمة المرور">
+      </div>
+      <small *ngIf="error">{{error.errors?.Email}}{{error.message}}</small>
+      <button type="submit" [disabled]="!loginForm.valid">تسجيل الدخول</button>
+    </form>
+  </div>
+</div> -->
+<div class="background">
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6 FormLogin">
+        <div class="card">
+          <div class="card-header">
+            <h1> تسجيل الدخول</h1>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="username">البريد الإلكتروني</label>
+                <input type="text" class="form-control" formControlName="email" placeholder="البريد الإلكتروني"
+                  id="username" name="username" required>
+
+                <!-- <div *ngIf="loginForm.controls['email']?.invalid" class="text-danger">
+                  ادخل البريد الإلكتروني
+                </div> -->
+                <div
+                  *ngIf="loginForm.controls['email']?.invalid && (loginForm.controls['email']?.dirty || loginForm.controls['email']?.touched)"
+                  class="text-danger">
+                  ادخل البريد الإلكتروني
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="password">كلمة المرور</label>
+                <input type="password" class="form-control" id="password" formControlName="password"
+                  placeholder="كلمة المرور" name="password" required>
+                <div
+                  *ngIf="loginForm.controls['password']?.invalid && (loginForm.controls['password']?.dirty || loginForm.controls['password']?.touched)"
+                  class="text-danger">
+                  ادخل كلمة المرور
+                </div>
+              </div>
+              <div class="d-flex">
+                <label>
+                  تذكرني المرة القادمة ؟
+                </label>
+                <input type="checkbox" name="rememberMe" formControlName="RememberMe" />
+              </div>
+              <div class="form-group" *ngIf="error">
+                <!-- <small *ngIf="error">{{error.errors?.Email}}{{error.message}}{{error}}</small> -->
+                <div *ngIf="loginForm.invalid || error" class="text-danger">
+                  {{error.errors?.Email}}{{error.message}}
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-secondary" *ngIf="submit">تسجيل الدخول</button>
+              <mat-spinner *ngIf="loading"></mat-spinner>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

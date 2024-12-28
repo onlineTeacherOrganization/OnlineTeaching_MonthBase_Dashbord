@@ -1,0 +1,19 @@
+<div class="container add">
+  <h1 mat-dialog-title>اعادة تشغيل</h1>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="input1" class="form-label">اتريد تشغيل الطالب {{this.data.studentName}}
+            <span [hidden]="!this.data.subSubjectID">في  {{this.data.subjectName}} ؟</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <!-- Repeat the above code for the remaining inputs (3-8) -->
+    <div class="mt-3 btnConCam d-flex justify-content-end">
+      <button type="submit" class="btn btn-primary mx-3 " (click)="onSubmit()">حفظ</button>
+      <button type="submit" class="btn btn-danger mx-3 " (click)="onNoClick()">خروج</button>
+    </div>
+  </div>
+</div>

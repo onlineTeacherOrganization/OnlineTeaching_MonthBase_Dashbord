@@ -1,0 +1,200 @@
+<!-- <div class="total">
+  <h1 mat-dialog-title> اضافة امتحان</h1>
+  <div class="edit-form">
+    <form [formGroup]="EditExam" (ngSubmit)="onSubmit()">
+      <div class="form-group" *ngIf="EditExam.controls['name'].errors?.['required']">
+        <label for="name">الاسم</label>
+        <input id="name" name="name" formControlName="name" type="text" required>
+      </div>
+      <div class="form-group" *ngIf="EditExam.controls['name'].errors?.['required']">
+        <label for="degree">الدرجة</label>
+        <input id="degree" name="degree" formControlName="degree" type="number" required>
+      </div>
+      <div class="form-group" *ngIf="EditExam.controls['name'].errors?.['required']">
+        <label for="examDuration">المدة</label>
+        <input id="examDuration" name="examDuration" formControlName="examDuration" type="number" required>
+      </div>
+      <div class="form-group" *ngIf="EditExam.controls['name'].errors?.['required']">
+        <label for="examOpenDate">البداية</label>
+        <input id="examOpenDate" name="examOpenDate" formControlName="examOpenDate" type="datetime-local" required>
+      </div>
+      <div class="form-group" *ngIf="EditExam.controls['name'].errors?.['required']">
+        <label for="examCloseDate">الانتهاء</label>
+        <input id="examCloseDate" name="examCloseDate" formControlName="examCloseDate" type="datetime-local" required>
+      </div>
+      <div class="form-group" *ngIf="EditExam.controls['name'].errors?.['required']">
+        <label for="subSubjectID">اضافة الي الاسبوع </label>
+        <select formControlName="subSubjectID" class="select" id="IsAppear">
+          <option value="{{item?.id}}" *ngFor="let item of Subsubjects">{{item?.name}}</option>
+        </select>
+      </div>
+      <div class="button-group">
+        <button type="button" class="cancel-button" (click)="onNoClick()">خروج</button>
+        <button type="submit" class="save-button">حفظ</button>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+
+<div class="container add">
+  <h1 mat-dialog-title style="direction: rtl;">تعديل {{examName}}</h1>
+  <div class="container mt-5">
+    <form [formGroup]="EditExam" enctype="multipart/form-data" mat-dialog-content>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="input1" class="form-label"> الاسم</label>
+            <input type="text" class="form-control" id="input1" name="name" formControlName="name" required>
+            <div class="form-group" *ngIf="EditExam.controls['name'].errors?.['required']">
+              <div *ngIf="EditExam.controls['name']?.touched  && EditExam.controls['name']?.invalid"
+                class="text-danger">
+                ادخل الاسم
+              </div>
+              <div class="text-danger"
+                *ngIf="invalid  && EditExam.controls['name']?.touched ==false&&EditExam.controls['name']?.errors?.['required']">
+                ادخل الاسم
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label"> الدرجة</label>
+            <input class="form-control" id="input1" name="name" formControlName="degree" type="number">
+            <div class="form-group" *ngIf="EditExam.controls['degree'].errors?.['required']">
+              <div *ngIf="EditExam.controls['degree']?.touched  && EditExam.controls['degree']?.invalid"
+                class="text-danger">
+                ادخل الدرجة
+              </div>
+              <div class="text-danger"
+                *ngIf="invalid  && EditExam.controls['degree']?.touched ==false&&EditExam.controls['degree']?.errors?.['required']">
+                ادخل الدرجة
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">المدة (دقيقة)</label>
+            <input class="form-control" id="input1" name="name" formControlName="examDuration" type="number">
+            <div class="form-group" *ngIf="EditExam.controls['examDuration'].errors?.['required']">
+              <div *ngIf="EditExam.controls['examDuration']?.touched  && EditExam.controls['examDuration']?.invalid"
+                class="text-danger">
+                ادخل المدة
+              </div>
+              <div class="text-danger"
+                *ngIf="invalid  && EditExam.controls['examDuration']?.touched ==false&&EditExam.controls['examDuration']?.errors?.['required']">
+                ادخل المدة
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">بدا الامتحان</label>
+            <input class="form-control" id="input1" name="name" formControlName="examOpenDate" type="datetime-local">
+            <div class="form-group" *ngIf="EditExam.controls['examOpenDate'].errors?.['required']">
+              <div *ngIf="EditExam.controls['examOpenDate']?.touched  && EditExam.controls['examOpenDate']?.invalid"
+                class="text-danger">
+                ادخل بدا الامتحان
+              </div>
+              <div class="text-danger" *ngIf="invalid  && EditExam.controls['examOpenDate']?.touched ==false
+              &&EditExam.controls['examOpenDate']?.errors?.['required']">
+                ادخل بدا الامتحان
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">انتهاء الامتحان</label>
+            <input class="form-control" id="input1" name="name" formControlName="examCloseDate" type="datetime-local">
+            <div class="form-group" *ngIf="EditExam.controls['examCloseDate'].errors?.['required']">
+              <div *ngIf="EditExam.controls['examCloseDate']?.touched  && EditExam.controls['examCloseDate']?.invalid"
+                class="text-danger">
+                ادخل انتهاء الامتحان
+              </div>
+              <div class="text-danger"
+                *ngIf="invalid  && EditExam.controls['examCloseDate']?.touched ==false&&EditExam.controls['examCloseDate']?.errors?.['required']">
+                ادخل انتهاء الامتحان
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label"
+              *ngIf="data.discriminator == 'Quiz' || data.discriminator == 'Assigment'">
+              المحاضرة</label>
+            <label for="dropdown" class="form-label" *ngIf="data.discriminator == 'Exam' ">
+              الاسبوع</label>
+            <!-- <select formControlName="subSubjectID" [(ngModel)]="subsubjectidTest" class="form-control" id="dropdown" autocomplete="on">
+              <option value="{{item.id}}" *ngFor="let item of Subsubjects">{{item.name}}</option>
+            </select> -->
+            <ng-autocomplete class="form-control" [data]="Subsubjects" [searchKeyword]="keyword"
+              [initialValue]="subsubjectidTest2" formControlName="subSubjectID" (selected)='selectEvent($event)'
+              (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+              [notFoundTemplate]="notFoundTemplate" (onNoResults)="handleNoResults()">
+            </ng-autocomplete>
+
+            <ng-template #itemTemplate let-item>
+              <a [innerHTML]="item.name"></a>
+            </ng-template>
+
+            <ng-template #notFoundTemplate let-notFound>
+              <div>لا يوجد</div>
+            </ng-template>
+            <div class="text-danger" *ngIf="(valuebool == true) ">
+              الرجاء ادخل الكتابة صحيحه
+            </div>
+            <div class="form-group"
+              *ngIf="EditExam.controls['subSubjectID'].errors?.['required']&&(data.discriminator == 'Quiz' || data.discriminator == 'Assigment')">
+              <div *ngIf="EditExam.controls['subSubjectID']?.touched  && EditExam.controls['subSubjectID']?.invalid"
+                class="text-danger">
+                ادخل المحاضرة
+              </div>
+              <div class="text-danger"
+                *ngIf="invalid  && EditExam.controls['subSubjectID']?.touched ==false&&EditExam.controls['subSubjectID']?.errors?.['required']">
+                ادخل المحاضرة
+              </div>
+            </div>
+            <div class="form-group"
+              *ngIf="EditExam.controls['subSubjectID'].errors?.['required']&&( data.discriminator == 'Exam')">
+              <div *ngIf="EditExam.controls['subSubjectID']?.touched  && EditExam.controls['subSubjectID']?.invalid"
+                class="text-danger">
+                ادخل الاسبوع
+              </div>
+              <div class="text-danger"
+                *ngIf="invalid  && EditExam.controls['subSubjectID']?.touched ==false&&EditExam.controls['subSubjectID']?.errors?.['required']">
+                ادخل الاسبوع
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" *ngIf="this.data.discriminator == 'Quiz'">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">النسبة المئوية لعرض الامتحان الصغير(%)</label>
+            <input class="form-control" id="input1" type="number" max="100" min="1" name="name"
+              formControlName="precentageToOpen">
+            <div class="form-group" *ngIf="EditExam.controls['precentageToOpen'].errors?.['required']">
+              <div
+                *ngIf="EditExam.controls['precentageToOpen']?.touched  && EditExam.controls['precentageToOpen']?.invalid"
+                class="text-danger">
+                النسبة المئوية لعرض الامتحان الصغير(%)
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="mt-3 btnConCam d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary mx-3 " (click)="onSubmit()">حفظ</button>
+        <button type="submit" class="btn btn-danger mx-3 " (click)="onNoClick()">خروج</button>
+
+      </div>
+
+    </form>
+  </div>
+</div>

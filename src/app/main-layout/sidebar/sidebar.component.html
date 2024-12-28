@@ -1,0 +1,96 @@
+<mat-list>
+  <mat-list-item routerLink="home">
+    <div matListItemTitle>الرئيسية</div>
+    <mat-icon matListItemIcon>home</mat-icon>
+  </mat-list-item>
+
+
+  <mat-list-item routerLink="students">
+    <div matListItemTitle>الطلبة</div>
+    <mat-icon matListItemIcon>autorenew</mat-icon>
+  </mat-list-item>
+  <!-- <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon matListItemIcon>assignment</mat-icon>
+        <div matListItemTitle> الامتحانات </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list-item  routerLink="exams">
+      امتحانات كاملة
+    </mat-list-item>
+    <mat-list-item  routerLink="quiz" >
+      امتحان صغير
+    </mat-list-item>
+  </mat-expansion-panel> -->
+
+  <mat-list-item routerLink="exams">
+    <div matListItemTitle>الواجبات و الامتحانات</div>
+    <mat-icon matListItemIcon>description</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item routerLink="rescheduleExams">
+    <div matListItemTitle>طلب اعادة الامتحان </div>
+    <mat-icon matListItemIcon>my_library_books</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item routerLink="levels">
+    <div matListItemTitle>المراحل</div>
+    <mat-icon matListItemIcon> clear_all</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item routerLink="lectures">
+    <div matListItemTitle>المحاضرات </div>
+    <mat-icon matListItemIcon>account_balance</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item routerLink="reopenLecture">
+    <div matListItemTitle>طلبات فتح المحاضرات</div>
+    <mat-icon matListItemIcon>assignment_return</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item routerLink="reviews">
+    <div matListItemTitle>الاراء</div>
+    <mat-icon matListItemIcon> comment</mat-icon>
+  </mat-list-item>
+
+
+  <mat-list-item routerLink="subscriptions">
+    <div matListItemTitle>الاشتراكات</div>
+    <mat-icon matListItemIcon>subscriptions</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item routerLink="subjects">
+    <div matListItemTitle>الشهور</div>
+    <mat-icon matListItemIcon>next_week</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item routerLink="subsubjects">
+    <div matListItemTitle>الاسابيع </div>
+    <mat-icon matListItemIcon> view_week</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item routerLink="latestudent">
+    <div matListItemTitle>الطلاب المتاخرين </div>
+    <mat-icon matListItemIcon>assignment_late</mat-icon>
+  </mat-list-item>
+  <mat-list-item routerLink="lock">
+    <div matListItemTitle>الطلاب  المقفولة  </div>
+    <mat-icon matListItemIcon>lock</mat-icon>
+  </mat-list-item>
+  <!-- <mat-list-item routerLink="questions">
+    <mat-icon matListItemIcon>Extension Icon</mat-icon>
+    <div matListItemTitle>الاسئلة  </div>
+  </mat-list-item>
+   -->
+  <mat-list-item routerLink="setting">
+    <div matListItemTitle>الاعدادات</div>
+    <mat-icon matListItemIcon slot="start">note</mat-icon>
+  </mat-list-item>
+
+  <mat-list-item>
+    <div matListItemTitle>
+      <button (click)="logout()" class="logout-btn">الخروج</button>
+    </div>
+  </mat-list-item>
+</mat-list>

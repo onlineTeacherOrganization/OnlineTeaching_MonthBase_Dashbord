@@ -1,0 +1,169 @@
+<!-- <div class="container">
+  <div class="total">
+    <h1 mat-dialog-title>اضافة سؤال </h1>
+    <form [formGroup]="formedit" mat-dialog-content (ngSubmit)="onSubmit()" enctype="multipart/form-data"
+      class="edit-form">
+      <div class="form  edit-form">
+        <div class="form-group">
+          <label for="description">الوصف</label>
+          <input type="text" formControlName="description" id="description" name="description" required>
+        </div>
+        <div class="form-group">
+          <label for="oneAnswer">الاجابة الاولة</label>
+          <input id="oneAnswer" name="oneAnswer" formControlName="oneAnswer" type="text" required>
+        </div>
+        <div class="form-group">
+          <label for="secondAnswer">الاجابة الثانية</label>
+          <input type="text" id="secondAnswer" formControlName="secondAnswer" name="secondAnswer" required>
+        </div>
+        <div class="form-group">
+          <label for="thirdAnswer"> الاجابة الثالثة</label>
+          <input type="text" id="thirdAnswer" formControlName="thirdAnswer" name="thirdAnswer" required>
+        </div>
+        <div class="form-group">
+          <label for="fourthAnswer">الاجابة الرابعة </label>
+          <input id="fourthAnswer" formControlName="fourthAnswer" name="fourthAnswer" type="text" required>
+        </div>
+        <div class="form-group">
+          <label for="correctAnswer">الاجابة الصحيحة </label>
+          <input id="correctAnswer" formControlName="correctAnswer" name="correctAnswer" type="text" required>
+        </div>
+
+        <div class="form-group">
+          <label for="ImageOrFile">رفع الملف </label>
+          <input type="file" id="ImageOrFile" name="ImageOrFile" (change)="onFileSelect($event)" />
+        </div>
+
+      </div>
+      <div class="button-group" mat-dialog-actions>
+        <button type="button" class="cancel-button" mat-button mat-dialog-close (click)="onNoClick()">خروج</button>
+        <button type="submit" class="save-button" mat-button>حفظ</button>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+<div class="container add">
+  <h1 mat-dialog-title>السؤال</h1>
+  <div class="container mt-5">
+    <form [formGroup]="formedit" mat-dialog-content enctype="multipart/form-data" mat-dialog-content>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label for="input1" class="form-label">الوصف</label>
+            <textarea type="text" formControlName="description" class="form-control" placeholder="الوصف" cols="4"
+              rows="3"></textarea>
+            <div class="form-group">
+              <div *ngIf="formedit.controls['description']?.touched  && formedit.controls['description']?.invalid"
+                class="text-danger">
+                ادخل ألوصف
+              </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['description']?.touched ==false">
+                ادخل ألوصف
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">الاجابة الاول</label>
+            <input type="text" class="form-control" id="input1" name="name" formControlName="oneAnswer" required>
+            <div class="form-group">
+              <div *ngIf="formedit.controls['oneAnswer']?.touched  && formedit.controls['oneAnswer']?.invalid"
+                class="text-danger">
+                ادخل الاجابة الاول
+              </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['oneAnswer']?.touched ==false">
+                ادخل الاجابة الاول
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">الاجابة الثانية</label>
+            <input type="text" class="form-control" id="input1" name="name" formControlName="secondAnswer" required>
+
+            <div class="form-group">
+              <div *ngIf="formedit.controls['secondAnswer']?.touched  && formedit.controls['secondAnswer']?.invalid"
+                class="text-danger">
+                ادخل الاجابة الثانية
+              </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['secondAnswer']?.touched ==false">
+                ادخل الاجابة الثانية
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">الاجابة الثالثة</label>
+            <input type="text" class="form-control" id="input1" name="name" formControlName="thirdAnswer" required>
+            <div class="form-group">
+              <div *ngIf="formedit.controls['thirdAnswer']?.touched  && formedit.controls['thirdAnswer']?.invalid"
+                class="text-danger">
+                ادخل الاجابة الثالثة
+              </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['thirdAnswer']?.touched ==false">
+                ادخل الاجابة الثالثة
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">الاجابة الرابعة</label>
+            <input type="text" class="form-control" id="input1" name="name" formControlName="fourthAnswer" required>
+            <div class="form-group">
+              <div *ngIf="formedit.controls['fourthAnswer']?.touched  && formedit.controls['fourthAnswer']?.invalid"
+                class="text-danger">
+                ادخل الاجابة الرابعة
+              </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['fourthAnswer']?.touched ==false">
+                ادخل الاجابة الرابعة
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">الاجابة الصحيحة</label>
+            <!-- <input type="text" class="form-control" id="input1" name="name" formControlName="correctAnswer" required> -->
+
+
+            <select formControlName="correctAnswer" class="form-control" id="dropdown" autocomplete="on">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+
+            <div class="form-group">
+              <div *ngIf="formedit.controls['correctAnswer']?.touched  && formedit.controls['correctAnswer']?.invalid"
+                class="text-danger">
+                ادخل الاجابة الصحيحة
+              </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['correctAnswer']?.touched ==false">
+                ادخل الاجابة الصحيحة
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label"> رفع الملف</label>
+            <input type="file" class="form-control" id="input1" (change)="onFileSelect($event)" required>
+            <p style="color: red;">{{Errorimage}}</p>
+            <p>{{ImageName}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- Repeat the above code for the remaining inputs (3-8) -->
+      <div class="mt-3 btnConCam d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary mx-3 " (click)="onSubmit()">حفظ</button>
+        <button type="submit" class="btn btn-danger mx-3 " (click)="onNoClick()">خروج</button>
+      </div>
+
+    </form>
+  </div>
+</div>

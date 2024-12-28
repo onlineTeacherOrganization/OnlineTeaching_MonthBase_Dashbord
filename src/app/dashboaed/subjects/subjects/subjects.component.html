@@ -1,0 +1,77 @@
+<!-- <button mat-raised-button style="color: red;" (click)="openDialog()">اضاف صف دراسي </button> -->
+<!-- <div class="container"> -->
+<h2> الشهور</h2>
+<div class="content">
+  <div class="above">
+    <div class="add">
+      <button (click)="AddopenDialog()" class="add-button">اضف شهر جديد</button>
+    </div>
+    <div class="search-container">
+      <select aria-placeholder="الاسبوع" (input)="Empty()" [(ngModel)]="searchQuery" class="form-control" id="dropdown"
+        name="drinks">
+        <option value="all" selected>الكل</option>
+        <option value="{{ele?.id}}" *ngFor="let ele of Levels">{{ele?.levelName}}</option>
+      </select>
+      <!-- <input type="text" placeholder="" class="form-control" (input)="Empty()"
+        [(ngModel)]="searchQuery"> -->
+      <button (click)="search()" class="btn btn-dark">البحث بالصف الدراسي</button>
+      <button (click)="clear()" *ngIf="searchQuery" class="btn btn-dark" class="clear">مسج</button>
+    </div>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="table">
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>التعديل</th>
+      <td mat-cell *matCellDef="let rowObj">
+        <!-- <button type="button" mat-raised-button (click)="openDialog(rowObj)">
+            <mat-icon>edit</mat-icon>
+          </button> -->
+        <button mat-button color="success" class="save-button" (click)="openDialog(rowObj)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-button color="warn" class="cancel-button" (click)="delete(rowObj)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="level">
+      <th mat-header-cell *matHeaderCellDef> الصف </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.level.levelName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="imagePath">
+      <th mat-header-cell *matHeaderCellDef> الصورة </th>
+      <td mat-cell *matCellDef="let rowObj">
+        <!-- <img src="http://menanabel2-001-site1.atempurl.com/E-learning/{{rowObj.imagePath}}" alt="no-image"> -->
+        <img [src]="rowObj.imagePath!=null ? ImgPath+rowObj.imagePath:'null'" *ngIf="rowObj.imagePath!=null ">
+        <span *ngIf="rowObj.imagePath==null ">لا يوجد</span>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> الشهر </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="telegeramLink">
+      <th mat-header-cell *matHeaderCellDef> رابط التلجرام </th>
+      <td mat-cell *matCellDef="let rowObj">
+        <a href="{{rowObj?.telegeramLink}}" target="_blank">
+          <mat-icon>link</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> السعر </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.price}} </td>
+
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="Datasubject?.count" [pageSize]="Datasubject?.size" [pageIndex]="Datasubject?.index"
+    [pageSizeOptions]="[5,10, 20, 50, 100]" (page)="pageChanged($event)">
+  </mat-paginator>
+</div>
+<!-- </div> -->

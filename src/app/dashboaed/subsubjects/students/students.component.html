@@ -1,0 +1,34 @@
+<!-- <div class="container"> -->
+<button type="button" class="close" (click)="Close()">
+  <mat-icon>close</mat-icon>
+</button>
+<h2> الطلاب </h2>
+<h2> {{dataSource ?"true":"flse"}} </h2>
+<div class="content">
+
+  <table mat-table [dataSource]="dataSource" class="table" *ngIf="dataSource">
+    <ng-container matColumnDef="num">
+      <th mat-header-cell *matHeaderCellDef> الرقم </th>
+      <td mat-cell *matCellDef="let rowObj,let i=index ">{{i+1}}</td>
+    </ng-container>   
+     <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> الاسم </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> التعديل</th>
+      <td mat-cell *matCellDef="let rowObj">
+        <button type="button" mat-raised-button (click)="openDialog(rowObj)" class="save-button">
+          <mat-icon>lock</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <h3 *ngIf="!dataSource">لايوجد طلاب</h3>
+  <mat-paginator [length]="Datasubject?.count" *ngIf="dataSource"  [pageSize]="Datasubject?.size" [pageIndex]="Datasubject?.index"
+    [pageSizeOptions]="[5,10, 20, 50, 100]" (page)="pageChanged($event)">
+  </mat-paginator>
+</div>
+<!-- </div> -->

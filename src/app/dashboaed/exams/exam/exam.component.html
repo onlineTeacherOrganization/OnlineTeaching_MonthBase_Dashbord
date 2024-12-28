@@ -1,0 +1,89 @@
+<!-- <div class="container"> -->
+<h2 mat-dialog-title> الواجبات و الامتحانات</h2>
+<div class="content" mat-dialog-content>
+  <div class="above">
+    <div class="add">
+      <button (click)="AddopenDialog()" class="add-button">اضف امتحان كامل</button>
+      <button (click)="AddopenAssignmentDialog()" class="add-button add-button2">اضف واجب</button>
+      <button (click)="AddopenQuizDialog()" class="add-button add-button3">اضف امتحان صغير</button>
+    </div>
+    <div>
+      <div class="search-container">
+        <input type="text" class="form-control" placeholder="اسم الامتحان" [(ngModel)]="searchQuery" (input)="Empty()">
+        <button (click)="search()">البحث</button>
+        <button (click)="clear()" class="clear" *ngIf="searchQuery">مسح</button>
+      </div>
+      <!-- <div class="search-container">
+        <input type="text" class="form-control" placeholder="رقم هاتف الطالب" [(ngModel)]="studentphone"
+          (input)="Empty()">
+        <input type="text" class="form-control" placeholder=" البريد الالكتروني" [(ngModel)]="email" (input)="Empty()">
+        <button (click)="SearchByStudentInfo()">البحث</button>
+        <button (click)="clear2()" class="clear" *ngIf="studentphone || email">مسح</button>
+      </div> -->
+    </div>
+
+  </div>
+  <table mat-table [dataSource]=" dataSource" class="table">
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>التعديل</th>
+      <td mat-cell *matCellDef="let rowObj">
+        <button type="button" class="save-button" (click)="openDialog(rowObj)" [hidden]="rowObj.isAppear">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button type="button" class="cancel-button" (click)="delete(rowObj)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="questions">
+      <th mat-header-cell *matHeaderCellDef> الاسئلة </th>
+      <td mat-cell *matCellDef="let rowObj">
+        <button type="button" class="save-button quest" (click)="questions(rowObj)">
+          الدخول للاسئلة
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> الامتحان </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="subSubjectID">
+      <th mat-header-cell *matHeaderCellDef> النوع </th>
+      <td mat-cell *matCellDef="let rowObj">
+        {{(rowObj.discriminator=='Quiz' )?"امتحان صغير":""}}
+        {{(rowObj.discriminator=='Exam' )?"امتحان":""}}
+        {{(rowObj.discriminator=='Assigment' )?"الواجب":""}}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="degree">
+      <th mat-header-cell *matHeaderCellDef> الدرجة </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.degree}} </td>
+    </ng-container>
+    <ng-container matColumnDef="examOpenDate">
+      <th mat-header-cell *matHeaderCellDef> البداية </th>
+      <td mat-cell *matCellDef="let rowObj">
+        {{(rowObj.examOpenDate!= null )?(rowObj.examOpenDate | date:'medium'):"لا يوجد"}}
+
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="examCloseDate">
+      <th mat-header-cell *matHeaderCellDef> الانتهاء </th>
+      <td mat-cell *matCellDef="let rowObj">
+        <!-- {{rowObj.examCloseDate | date:'medium'}} -->
+        {{(rowObj.examCloseDate!= null )?(rowObj.examCloseDate | date:'medium'):"لا يوجد"}}
+
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="examDuration">
+      <th mat-header-cell *matHeaderCellDef>المدة (دقيقة)</th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.examDuration }} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="Datasubject?.count" [pageSize]="Datasubject?.size" [pageIndex]="Datasubject?.index"
+    [pageSizeOptions]="[5,10, 20, 50, 100]" (page)="pageChanged($event)">
+  </mat-paginator>
+</div>
+<!-- </div> -->

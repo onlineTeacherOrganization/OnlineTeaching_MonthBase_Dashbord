@@ -1,0 +1,84 @@
+<!-- <button mat-raised-button style="color: red;" (click)="openDialog()">اضاف صف دراسي </button> -->
+
+<h2> الاسابيع</h2>
+<div class="content">
+  <div class="above">
+    <div class="add">
+      <button (click)="AddopenDialog()" class="add-button">اضف اسبوع جديد</button>
+    </div>
+    <div class="search-container">
+      <input type="text" placeholder=" البحث باسم الاسبوع" class="form-control" (input)="Empty()"
+        [(ngModel)]="searchQuery">
+      <!-- <select (input)="Empty()" [(ngModel)]="searchQuery" class="form-control" id="dropdown" name="drinks">
+        <option value="all" selected>الكل</option>
+        <option value="{{item.id}}" *ngFor="let item of Subsubjects">{{item.name}}</option>
+      </select> -->
+      <button (click)="search()" class="btn btn-success">البحث </button>
+      <button (click)="clear()" class="btn btn-warning clear" *ngIf="searchQuery">مسح</button>
+    </div>
+    <!-- <div class="search-container">
+      <select (input)="Empty()" [(ngModel)]="searchQuery" class="form-control" id="dropdown" name="drinks">
+        <option value="all" selected>الكل</option>
+        <option value="{{item.id}}" *ngFor="let item of Subsubjects">{{item.name}}</option>
+      </select>
+      <button (click)="search()" class="btn btn-success">البحث بالشهر</button>
+      <button (click)="clear()" class="btn btn-warning clear" *ngIf="searchQuery">مسح</button>
+    </div> -->
+  </div>
+  <table mat-table [dataSource]="dataSource" class="table">
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>التعديل</th>
+      <td mat-cell *matCellDef="let rowObj">
+        <!-- <button type="button" mat-raised-button (click)="openDialog(rowObj)">
+            <mat-icon>edit</mat-icon>
+          </button> -->
+        <button mat-button color="success" class="save-button" (click)="openDialog(rowObj)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-button color="warn" class="cancel-button" (click)="delete(rowObj)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="students">
+      <th mat-header-cell *matHeaderCellDef> الطلاب </th>
+      <td mat-cell *matCellDef="let rowObj">
+        <button mat-button (click)="StudentopenDialog(rowObj)" class="studentSub">
+          <mat-icon>supervised_user_circle</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="closeDate">
+      <th mat-header-cell *matHeaderCellDef> النهاية </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.closeDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="openDate">
+      <th mat-header-cell *matHeaderCellDef> البداية </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.openDate}} </td>
+    </ng-container> -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef> الصورة </th>
+      <td mat-cell *matCellDef="let rowObj">
+        <img [src]="rowObj.imagePath!=null?ImagePath+rowObj.imagePath:'null'" *ngIf="rowObj.imagePath!=null ">
+        <span *ngIf="rowObj.imagePath==null ">لا يوجد</span>
+
+      </td>
+      <!-- <td mat-cell *matCellDef="let rowObj"> <img src="{{ImagePath+'/'+rowObj.imagePath}}" alt="لا يوجد صورة"> </td> -->
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> الاسبوع </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="SubjectName">
+      <th mat-header-cell *matHeaderCellDef> الشهر </th>
+      <!-- <td mat-cell *matCellDef="let rowObj"> {{rowObj.telegeramLink}} </td> -->
+      <td mat-cell *matCellDef="let rowObj">{{rowObj.subjectName}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="Datasubject?.count" [pageSize]="Datasubject?.size" [pageIndex]="Datasubject?.index"
+    [pageSizeOptions]="[5,10, 20, 50, 100]" (page)="pageChanged($event)">
+  </mat-paginator>
+</div>

@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>الطلاب المتاخرين</h2>
+<div class="content" mat-dialog-content>
+  <table mat-table [dataSource]=" dataSource" class="table">
+    <ng-container matColumnDef="StudentName">
+      <th mat-header-cell *matHeaderCellDef> اسم الطالب </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.studentName}} </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>تعديل</th>
+      <td mat-cell *matCellDef="let rowObj">
+        <button type="button" class="save-button" (click)="openDialog(rowObj)" [hidden]="rowObj.isAppear">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container> -->
+    <ng-container matColumnDef="StudentPhone">
+      <th mat-header-cell *matHeaderCellDef> رقم الهاتف </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.studentPhone}} </td>
+    </ng-container>
+    <ng-container matColumnDef="subsubjectName">
+      <th mat-header-cell *matHeaderCellDef> الاسبوع </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.subsubjectName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="StartWorking">
+      <th mat-header-cell *matHeaderCellDef> بدا المشاهدة </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.startWorking| date:'medium'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="watchingPrecentageIsPassed">
+      <th mat-header-cell *matHeaderCellDef> مشاهدة المحتوي</th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.startWorking ?"تخطي الفترة":"لم يتخطي الفترة "}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="QuizIsPassed">
+      <th mat-header-cell *matHeaderCellDef> امتحان صغير </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.QuizIsPassed ?"تم المرور":"لم يجتاز "}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="AssigmentIsPassed">
+      <th mat-header-cell *matHeaderCellDef> الواجب </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.AssigmentIsPassed ?"تم المرور":"لم يجتاز "}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ExamIsPassed">
+      <th mat-header-cell *matHeaderCellDef> الامتحان </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.ExamIsPassed ?"تم المرور":"لم يجتاز "}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="Datasubject?.count" [pageSize]="Datasubject?.size" [pageIndex]="Datasubject?.index"
+    [pageSizeOptions]="[5,10, 20, 50, 100]" (page)="pageChanged($event)">
+  </mat-paginator>

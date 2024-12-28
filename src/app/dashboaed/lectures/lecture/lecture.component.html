@@ -1,0 +1,108 @@
+<!-- <div class="container"> -->
+<h2> المحاضرات </h2>
+<div class="content">
+  <div class="above">
+    <div class="add">
+      <button (click)="AddopenDialog()" class="add-button">اضف محاضرة</button>
+    </div>
+    <div>
+      <div class="search-container">
+        <input type="text" class="form-control" (input)="Empty()" placeholder="البحث باسم المحاضرة"
+          [(ngModel)]="searchQuery">
+        <button (click)="search()">البحث</button>
+        <button (click)="clear()" class="form-control" class="clear" *ngIf="searchQuery">مسح</button>
+      </div>
+      <div class="search-container">
+        <!-- <input type="text" class="form-control" (input)="Empty()" placeholder="البحث باسم الاسبوع"
+          [(ngModel)]="BySubSubject"> -->
+        <!-- <select aria-placeholder="الاسبوع" (input)="Empty()" [(ngModel)]="BySubSubject" class="form-control"
+          id="dropdown" >
+          <option value="all" selected>الكل</option>
+          <option value="{{item.id}}" *ngFor="let item of SubsubjectData">{{item.name}}</option>
+        </select> -->
+        <ng-autocomplete class="form-control" [data]="SubsubjectData" [searchKeyword]="keyword"
+          placeholder="اختار الاسبوع" 
+           (selected)='selectEvent($event)'
+          (inputChanged)='onChangeSearch($event)'
+          (inputCleared)='handleRemoveSelection()'
+          (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+        </ng-autocomplete>
+
+        <ng-template #itemTemplate let-item>
+          <a [innerHTML]="item.name"></a>
+        </ng-template>
+
+        <ng-template #notFoundTemplate let-notFound>
+          <div [innerHTML]="" class="text-danger">لا يوجد</div>
+        </ng-template>
+        <button (click)="GetBySubSubject()">البحث بالاسبوع</button>
+        <button (click)="clear()" class="clear" *ngIf="BySubSubject">مسح</button>
+      </div>
+    </div>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="table">
+    <ng-container matColumnDef="startLiveWatchingDateTime">
+      <th mat-header-cell *matHeaderCellDef> البداية </th>
+      <td mat-cell *matCellDef="let rowObj">
+        {{rowObj.startLiveWatchingDateTime | date:'short'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> المحاضرة </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.name}} </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="subSubjectID">
+      <th mat-header-cell *matHeaderCellDef> الاسبوع </th>
+      <td mat-cell *matCellDef="let rowObj">
+        {{rowObj.subSubject}}
+      </td>
+    </ng-container> -->
+    <ng-container matColumnDef="isFree">
+      <th mat-header-cell *matHeaderCellDef> الحاله </th>
+      <td mat-cell *matCellDef="let rowObj">
+        {{rowObj.isFree==true?'مجانية':'مدفوعة'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="stopLiveWatchingDateTime">
+      <th mat-header-cell *matHeaderCellDef> الانتهاء </th>
+      <td mat-cell *matCellDef="let rowObj">
+        {{rowObj.stopLiveWatchingDateTime | date:'short'}} </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="watchingCount">
+      <th mat-header-cell *matHeaderCellDef> عدد المشاهدات </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.watchingCount }} </td>
+    </ng-container> -->
+    <ng-container matColumnDef="lectureLink">
+      <th mat-header-cell *matHeaderCellDef> رابط المحاضرة</th>
+      <td mat-cell *matCellDef="let rowObj">
+
+        <a href="{{rowObj.lectureLink }}" target="_blank">
+          <mat-icon>link</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="quizID">
+      <th mat-header-cell *matHeaderCellDef> quizID </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.quizID}} </td>
+    </ng-container>
+    <ng-container matColumnDef="assigmentID">
+      <th mat-header-cell *matHeaderCellDef> الشهر</th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.assigmentID }} </td>
+    </ng-container> -->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> التعديل</th>
+      <td mat-cell *matCellDef="let rowObj">
+        <button type="button" mat-raised-button (click)="openDialog(rowObj)" class="save-button">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button type="button" class="cancel-button" (click)="DeleteDialog(rowObj)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="Datasubject?.count" [pageSize]="Datasubject?.size" [pageIndex]="Datasubject?.index"
+    [pageSizeOptions]="[5,10, 20, 50, 100]" (page)="pageChanged($event)">
+  </mat-paginator>
+</div>
+<!-- </div> -->

@@ -1,0 +1,52 @@
+<!-- <div class="total">
+  <h1 mat-dialog-title> تعديل ارقام الطالب {{Student}}؟</h1>
+  <div class="edit-form" mat-dialog-content>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+      <input type="text" formControlName="phone">
+      <input type="text" formControlName="parentPhone">
+      <div class="button-group" mat-dialog-actions>
+        <button type="button" class="cancel-button" mat-button mat-dialog-close (click)="onNoClick()">خروج</button>
+        <button type="submit" class="save-button" mat-button [disabled]="!myForm.valid">حفظ</button>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+<div class="container add">
+  <h1 mat-dialog-title>تعديل الطالب</h1>
+  <div class="container mt-5">
+    <form [formGroup]="myForm" mat-dialog-content enctype="multipart/form-data" mat-dialog-content>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="input1" class="form-label">رقم هاتف الطالب</label>
+            <input type="text" class="form-control" id="input1" name="name" formControlName="phone" required>
+            <div class="form-group">
+              <div *ngIf="myForm.controls['phone']?.touched  && myForm.controls['phone']?.invalid"
+                class="text-danger">
+                ادخل رقم هاتف الطالب
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">رقم هاتف الوالد </label>
+            <input type="text" class="form-control" id="input1" name="name" formControlName="parentPhone" required>
+            <div class="form-group">
+              <div *ngIf="myForm.controls['parentPhone']?.touched  && myForm.controls['parentPhone']?.invalid"
+                class="text-danger">
+                ادخل  هاتف الوالد
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-3 btnConCam d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary mx-3 " (click)="onSubmit()">حفظ</button>
+        <button type="submit" class="btn btn-danger mx-3 " (click)="onNoClick()">خروج</button>
+      </div>
+
+    </form>
+  </div>
+</div>

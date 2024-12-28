@@ -1,0 +1,240 @@
+<div class="container add">
+  <h1 mat-dialog-title>اضافة  محاضرة </h1>
+  <div class="container mt-5">
+    <form [formGroup]="formedit" enctype="multipart/form-data" mat-dialog-content>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="input1" class="form-label">الاسم</label>
+            <input type="text" class="form-control" id="input1" formControlName="Name" name="name">
+            <div class="form-group" *ngIf="formedit.controls['Name'].errors?.['required']">
+              <div *ngIf="formedit.controls['Name']?.touched  && formedit.controls['Name']?.invalid"
+                class="text-danger">
+                ادخل الاسم
+              </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['Name']?.touched ==false">
+                ادخل الاسم
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">الشهر</label>
+            <select class="form-control" id="dropdown" (focus)="onChange($event)" (change)="onChange($event)"
+              autocomplete="on">
+              <option value="{{item.id}}" *ngFor="let item of subjectsItems">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">الاسبوع</label>
+            <ng-autocomplete class="form-control" [data]="subsubjectFilter" [searchKeyword]="keyword"
+              placeholder="اختار الاسبوع" formControlName="SubSubjectID" (selected)='selectEvent($event)'
+              (inputChanged)='onChangeSearch($event)' (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+              [notFoundTemplate]="notFoundTemplate">
+            </ng-autocomplete>
+
+            <ng-template #itemTemplate let-item>
+              <a [innerHTML]="item.name"></a>
+            </ng-template>
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="">لا يوجد</div>
+            </ng-template>
+            <div class="text-danger" *ngIf="valueboolSubSubjectID ==true">
+              الرجاء ادخل الكتابة صحيحه
+            </div>
+            <div class="form-group" *ngIf="formedit.controls['SubSubjectID'].errors?.['required']">
+              <div *ngIf="formedit.controls['SubSubjectID']?.touched  && formedit.controls['SubSubjectID']?.invalid"
+                class="text-danger">
+                ادخل الاسبوع
+              </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['SubSubjectID']?.touched ==false">
+                ادخل الاسبوع
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3 ">
+            <label for="isExamLecture" class="form-check-label">اضافة محاضره حل امتحان</label>
+            <input type="checkbox" class="form-check-input mx-4" id="isExamLecture"
+              [disabled]="formedit.controls['SubSubjectID'].value && boolisExamLecture" [(ngModel)]="isExamLecture"
+              [ngModelOptions]=" 
+              {standalone: true}" name="isExamLecture" style="border: 1px solid black;">
+            <div class="form-group">
+              <div class="form-group" *ngIf="boolisExamLecture==true">
+                <div class="text-danger" style="font-size: 13px">
+                  يجب اختيار اسبوع به امتحان
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="input3" class="form-label">المحاضرة السابقة</label>
+            <!-- <select formControlName="LectureID" class="form-control" id="input3" autocomplete="on">
+              <option value=" ">لا شئ</option>
+              <option value="{{item.id}}" *ngFor="let item of Lectures">{{item.name}}</option>
+            </select> -->
+
+
+            <ng-autocomplete class="form-control" [data]="Lectures" [searchKeyword]="keyword2"
+              placeholder="اختار المحاضرة" formControlName="LectureID" (selected)='selectEvent2($event)'
+              (inputChanged)='onChangeSearch2($event)' (inputFocused)='onFocused2($event)' [itemTemplate]="itemTemplate"
+              [notFoundTemplate]="notFoundTemplate">
+            </ng-autocomplete>
+            <ng-template #itemTemplate let-item>
+              <a [innerHTML]="item.name"></a>
+            </ng-template>
+
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="">لا يوجد</div>
+            </ng-template>
+            <div class="text-danger" *ngIf="valueboolLectureID ==true ">
+              الرجاء ادخل الكتابة صحيحه
+            </div>
+            <div class="form-group" *ngIf="formedit.controls['LectureID'].errors?.['required']">
+              <div *ngIf="formedit.controls['LectureID']?.touched  && formedit.controls['LectureID']?.invalid"
+                class="text-danger">
+                ادخل المحاضرة السابقة
+              </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['LectureID']?.touched ==false">
+                ادخل المحاضرة السابقة
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="input5" class="form-label">البداية</label>
+            <input type="datetime-local" class="form-control" id="input5" formControlName="StartLiveWatchingDateTime">
+            <div class="form-group" *ngIf="formedit.controls['StartLiveWatchingDateTime'].errors?.['required']">
+              <div
+                *ngIf="formedit.controls['StartLiveWatchingDateTime']?.touched  && formedit.controls['StartLiveWatchingDateTime']?.invalid"
+                class="text-danger">
+                ادخل وقت البداية
+              </div>
+              <div class="text-danger"
+                *ngIf="invalid && formedit.controls['StartLiveWatchingDateTime']?.touched ==false">
+                ادخل وقت البداية
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="input6" class="form-label">النهاية</label>
+            <input type="datetime-local" class="form-control" id="input6" formControlName="StopLiveWatchingDateTime"
+              [value]="this.editdata?.StopLiveWatchingDateTime">
+            <div class="form-group" *ngIf="formedit.controls['StopLiveWatchingDateTime'].errors?.['required']">
+              <div
+                *ngIf="formedit.controls['StopLiveWatchingDateTime']?.touched  && formedit.controls['StopLiveWatchingDateTime']?.invalid"
+                class="text-danger">
+                ادخل الوقت التوقف
+              </div>
+              <div class="text-danger"
+                *ngIf="invalid && formedit.controls['StopLiveWatchingDateTime']?.touched ==false">
+                ادخل وقت التوقف
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="input7" class="form-label">الاعلان </label>
+            <select formControlName="IsAppear" class="form-control" id="input7" autocomplete="on">
+              <option value="true">ظهور</option>
+              <option value="false">اخفاء</option>
+            </select>
+            <div class="form-group" *ngIf="formedit.controls['IsAppear'].errors?.['required']">
+              <div *ngIf="formedit.controls['IsAppear']?.touched  && formedit.controls['IsAppear']?.invalid"
+                class="text-danger">
+                ادخل الاعلان
+              </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['IsAppear']?.touched ==false">
+                ادخل الاعلان
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="input9" class="form-label">الحالة</label>
+            <select formControlName="IsFree" class="form-control" id="input9" autocomplete="on">
+              <option value="true">مجانية</option>
+              <option value="false">مدفوعة</option>
+            </select>
+            <div class="form-group" *ngIf="formedit.controls['IsFree'].errors?.['required']">
+              <div *ngIf="formedit.controls['IsFree']?.touched  && formedit.controls['IsFree']?.invalid"
+                class="text-danger">
+                ادخل الحالة
+              </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['IsFree']?.touched ==false">
+                ادخل الحالة
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="input8" class="form-label">رابط المحاضرة </label>
+            <input type="text" class="form-control" id="input8" formControlName="LectureLink" required>
+            <div class="form-group" *ngIf="formedit.controls['LectureLink'].errors?.['required']">
+              <div
+                *ngIf="formedit.controls['LectureLink']?.touched  && formedit.controls['LectureLink']?.errors?.['required']"
+                class="text-danger">ادخل رابط المحاضرة </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['LectureLink']?.touched ==false">ادخل رابط
+                المحاضرة
+              </div>
+              <div class="text-danger" *ngIf="LectureLinks?.errors?.['pattern']">الرجاء ادخال الرابط صحيح </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label for="input10" class="form-label">رفع الملف </label>
+            <input type="file" class="form-control" id="input10" type="file" id="FilePath"
+              (change)="onFileSelected($event)" required>
+            <p style="color: red;">{{Errorimage}}</p>
+            <p>{{ImageName}}</p>
+            <div class="form-group">
+              <div *ngIf="formedit.controls['IsFree']?.touched  && formedit.controls['IsFree']?.invalid"
+                class="text-danger">
+                ادخل رفع الملف
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label for="input4" class="form-label">الوصف</label>
+            <!-- <input type="text" class="form-control" id="input4" formControlName="Description" name="Description"
+              [value]="this.editdata?.Description" required> -->
+            <textarea type="text" [value]="this.editdata?.Description" formControlName="Description"
+              class="form-control" placeholder="الوصف" cols="5" rows="3"></textarea>
+            <div class="form-group" *ngIf="formedit.controls['Description'].errors?.['required']">
+              <div *ngIf="formedit.controls['Description']?.touched  && formedit.controls['Description']?.invalid"
+                class="text-danger">
+                ادخل الوصف
+              </div>
+              <div class="text-danger" *ngIf="invalid && formedit.controls['IsFree']?.touched ==false">
+                ادخل الحالة
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Repeat the above code for the remaining inputs (3-8) -->
+      <div class="mt-3 btnConCam d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary mx-3 " (click)="onSubmit()">حفظ</button>
+        <button type="submit" class="btn btn-danger mx-3 " (click)="onNoClick()">خروج</button>
+      </div>
+    </form>
+  </div>
+</div>

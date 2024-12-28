@@ -1,0 +1,16 @@
+.example-spacer {
+    flex: 1 1;
+}
+
+h2 {
+    padding: 10px;
+}
+mat-icon {
+    cursor: pointer;
+}
+mat-toolbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}

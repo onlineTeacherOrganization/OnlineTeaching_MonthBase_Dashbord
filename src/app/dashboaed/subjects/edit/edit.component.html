@@ -1,0 +1,171 @@
+<!-- <div class="total">
+  <h1 mat-dialog-title> تعديل شهر</h1>
+  <div class="edit-form" mat-dialog-content>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+      <div class="form">
+        <div class="form-group">
+          <label for="name">اسم الشهر </label>
+          <input type="text" formControlName="name" id="name" name="name">
+        </div>
+        <div class="form-group">
+          <label for="telegpriceeramLink"> السعر </label>
+          <input type="text" id="price" name="price" formControlName="price" [value]="data.level?.price">
+        </div>
+        <div class="form-group">
+          <label for="telegpriceeramLink"> رابط التلجرام </label>
+          <input type="text" formControlName="telegeramLink" [value]="data.level?.telegeramLink">
+        </div>
+        <div class="form-group">
+          <label for="ImageOrFile">رفع الملف</label>
+          <input type="file" id="ImageOrFile" name="ImageOrFile" (change)="onFileSelected($event)" #filephoto />
+        </div>
+        <div class="form-group">
+          <label for="LevelID"> الصف الدراسي</label>
+          <select name="LevelID" formControlName="LevelID" id="LevelID">
+            <option value="{{item.id}}" *ngFor="let item of Level">
+              {{item.levelName}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="describtion">الوصف </label>
+          <textarea name="describtion" formControlName="describtion" id="" cols="10" rows="5"></textarea>
+        </div>
+        <div class="button-group" mat-dialog-actions>
+          <button type="button" mat-button mat-dialog-close class="cancel-button" (click)="onNoClick()">خروج</button>
+          <button type="submit" mat-button class="save-button" >حفظ</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div> -->
+<div class="container add">
+  <h1 mat-dialog-title>تعديل شهر </h1>
+  <div class="container mt-5">
+    <form [formGroup]="myForm" enctype="multipart/form-data" mat-dialog-content>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="input1" class="form-label">الاسم</label>
+            <input type="text" class="form-control" id="input1" name="name" formControlName="name" required>
+          </div>
+          <div class="form-group">
+            <div *ngIf="myForm.controls['name']?.touched  && myForm.controls['name']?.invalid " class="text-danger">
+              ادخل الاسم
+            </div>
+            <div class="text-danger"
+              *ngIf="invalid && myForm.controls['name']?.touched ==false && myForm.controls['name']?.errors?.['required']">
+              ادخل الاسم
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="LevelID" class="form-label"> الصف الدراسي</label>
+            <select formControlName="LevelID" name="LevelID" class="form-control" autocomplete="on">
+              <option value="{{item.id}}" *ngFor="let item of Level">{{item.levelName}}</option>
+            </select>
+            <div class="form-group">
+              <div *ngIf="(myForm.controls['LevelID']?.touched  && myForm.controls['LevelID']?.invalid )"
+                class="text-danger">
+                ادخل الصف الدراسي
+              </div>
+              <div class="text-danger"
+                *ngIf="invalid && myForm.controls['LevelID']?.touched ==false&& myForm.controls['LevelID']?.errors?.['required']">
+                ادخل الصف الدراسي
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="input4" class="form-label">السعر</label>
+            <input type="text" class="form-control" id="input4" formControlName="price" required>
+          </div>
+          <div class="form-group">
+            <div *ngIf="(myForm.controls['price']?.touched  && myForm.controls['price']?.invalid )" class="text-danger">
+              ادخل السعر
+            </div>
+            <div class="text-danger"
+              *ngIf="invalid && myForm.controls['price']?.touched ==false&& myForm.controls['price']?.errors?.['required'] ">
+              ادخل السعر
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="input5" class="form-label">رابط التلجرام</label>
+            <input type="text" class="form-control" id="input5" formControlName="telegeramLink" >
+          </div>
+          <div class="form-group">
+            <div
+              *ngIf="myForm.controls['telegeramLink']?.touched  && myForm.controls['telegeramLink']?.invalid&& myForm.controls['telegeramLink']?.dirty"
+              class="text-danger">
+              ادخل رابط التلجرام
+            </div>
+            <div class="text-danger"
+              *ngIf="invalid && myForm.controls['telegeramLink']?.touched ==false&& myForm.controls['telegeramLink']?.invalid&& myForm.controls['telegeramLink']?.errors?.['required']">
+              ادخل رابط التلجرام
+            </div>
+            <div class="text-danger" *ngIf="myForm.controls['telegeramLink']?.errors?.['pattern']">
+              ادخل رابط التلجرام صحيحا
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="input5" class="form-label">رابط الفيديو التعريفى</label>
+            <input type="text" class="form-control" id="input5" formControlName="IntroVideo" >
+          </div>
+          <div class="form-group">
+            <div
+              *ngIf="myForm.controls['IntroVideo']?.touched  && myForm.controls['IntroVideo']?.invalid&& myForm.controls['telegeramLink']?.dirty"
+              class="text-danger">
+              ادخل رابط الفيديو التعريفى
+            </div>
+            <div class="text-danger"
+              *ngIf="invalid && myForm.controls['IntroVideo']?.touched ==false&& myForm.controls['IntroVideo']?.invalid&& myForm.controls['telegeramLink']?.errors?.['required']">
+              ادخل رابط الفيديو التعريفى
+            </div>
+            <div class="text-danger" *ngIf="myForm.controls['IntroVideo']?.errors?.['pattern']">
+              ادخل رابط الفيديو التعريفى صحيحا
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="input6" class="form-label">رفع الملف</label>
+            <input type="file" class="form-control" id="input6" (change)="onFileSelected($event)" #filephoto>
+            <p style="color: red;">{{Errorimage}}</p>
+            <p>{{ImageName}}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="input7" class="form-label">الوصف</label>
+            <textarea type="text" formControlName="describtion" class="form-control" placeholder="الوصف" cols="5"
+              rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <div *ngIf="myForm.controls['describtion']?.touched  && myForm.controls['describtion']?.invalid"
+              class="text-danger">
+              ادخل الوصفzxc
+            </div>
+            <div class="text-danger"
+              *ngIf="invalid && myForm.controls['describtion']?.touched ==false&& myForm.controls['describtion']?.errors?.['required']">
+              ادخل الوصف
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Repeat the above code for the remaining inputs (3-8) -->
+      <div class="mt-3 btnConCam d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary mx-3 " (click)="onSubmit()">حفظ</button>
+        <button type="submit" class="btn btn-danger mx-3 " (click)="onNoClick()">خروج</button>
+      </div>
+    </form>
+  </div>
+</div>

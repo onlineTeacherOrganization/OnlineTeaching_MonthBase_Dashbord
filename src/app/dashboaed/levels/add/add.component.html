@@ -1,0 +1,75 @@
+<!-- <div class="total">
+  <h1 mat-dialog-title> تعديل  الصف الدراسي</h1>
+  <div mat-dialog-content>
+    <div class="edit-form">
+      <form [formGroup]="formsubsubjects" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <div class="form">
+          <div class="form-group ">
+            <label for="levelName">اسم الصف </label>
+            <input type="text" formControlName="levelName" id="levelName" name="levelName" required>
+          </div>
+          <div class="form-group">
+            <label for="telegeramLink"> رابط التلجرام </label>
+            <input type="text" id="telegeramLink" formControlName="telegeramLink" name="telegeramLink" required>
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <div class="button-group" mat-dialog-actions>
+    <button type="button" class="cancel-button" mat-button mat-dialog-close (click)="onNoClick()">خروج</button>
+    <button type="button" class="save-button" mat-button (click)="onSubmit()">حفظ</button>
+  </div>
+</div> -->
+
+<div class="container add">
+  <h1 mat-dialog-title>تعديل الصف</h1>
+  <div class="container mt-5">
+    <form [formGroup]="formsubsubjects" mat-dialog-content enctype="multipart/form-data" mat-dialog-content>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="input1" class="form-label">اسم المرحلة</label>
+            <input type="text" class="form-control" id="input1" name="name" formControlName="levelName" required>
+          </div>
+          <div class="form-group">
+            <div
+              *ngIf="formsubsubjects.controls['levelName']?.touched  && formsubsubjects.controls['levelName']?.invalid"
+              class="text-danger">
+              ادخل المرحلة
+            </div>
+            <div class="text-danger" *ngIf="invalid && formsubsubjects.controls['levelName']?.touched ==false">
+              ادخل المرحلة
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="dropdown" class="form-label">رابط التلجرام </label>
+            <input type="text" class="form-control" id="input1" name="name" formControlName="telegeramLink" required>
+          </div>
+          <div class="form-group">
+            <div
+              *ngIf="formsubsubjects.controls['telegeramLink']?.touched  && formsubsubjects.controls['telegeramLink']?.invalid"
+              class="text-danger">
+              ادخل رابط التلجرام
+            </div>
+            <div class="text-danger" *ngIf="invalid && formsubsubjects.controls['telegeramLink']?.touched ==false">
+              ادخل رابط التلجرام
+            </div>
+            <div class="text-danger" *ngIf="telegeramLink?.errors?.['telegeramLink']">الرجاء ادخال الرابط صحيح </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- Repeat the above code for the remaining inputs (3-8) -->
+      <div class="mt-3 btnConCam d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary mx-3 " (click)="onSubmit()">حفظ</button>
+        <button type="submit" class="btn btn-danger mx-3 " (click)="onNoClick()">خروج</button>
+      </div>
+
+    </form>
+  </div>
+</div>

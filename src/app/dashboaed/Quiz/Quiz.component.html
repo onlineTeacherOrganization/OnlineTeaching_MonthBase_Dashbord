@@ -1,0 +1,38 @@
+<!-- <div class="total">
+  <h1> اضافة امتحان قصير جديد</h1>
+
+  <div class="edit-form" >
+    <form [formGroup]="QuizForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">الاسم</label>
+        <input id="name" name="name" formControlName="name" type="text" required>
+      </div>
+      <div class="form-group">
+        <label for="degree">الدرجة</label>
+        <input id="degree" name="degree" formControlName="degree" type="number" required>
+      </div>
+      <div class="form-group">
+        <label for="examDuration">المدة</label>
+        <input id="examDuration" name="examDuration" formControlName="examDuration" type="number" required>
+      </div>
+      <div class="form-group">
+        <label for="examOpenDate">البداية</label>
+        <input id="examOpenDate" name="examOpenDate" formControlName="examOpenDate" type="datetime-local" required>
+      </div>
+      <div class="form-group">
+        <label for="examCloseDate">الانتهاء</label>
+        <input id="examCloseDate" name="examCloseDate" formControlName="examCloseDate" type="datetime-local" required>
+      </div>
+      <div class="form-group">
+        <label for="lectureID">اضافة الي محاضرة</label>
+        <select formControlName="lectureID">
+          <option *ngFor="let item of AllLectures" [value]="item.id">{{item.name}}</option>
+        </select>
+      </div>
+      <div class="button-group" >
+        <button type="button" class="cancel-button" mat-button mat-dialog-close (click)="onNoClick()">خروج</button>
+        <button type="submit" class="save-button" mat-button>حفظ</button>
+      </div>
+    </form>
+  </div>
+</div> -->

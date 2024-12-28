@@ -1,0 +1,41 @@
+.logout-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  background-color: #ff5f5f;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #ff3333;
+}
+
+@media screen and (max-width: 480px) {
+  .logout-btn {
+    width: 80%;
+  }
+}
+
+mat-list-item {
+  direction: rtl;
+  cursor: pointer;
+}
+
+mat-list {
+  padding-top: 65px !important;
+}
+
+div {
+  margin: 10px;
+}
+
+.mat-mdc-form-field+.mat-mdc-form-field {
+  margin-left: 8px;
+}
