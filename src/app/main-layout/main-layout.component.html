@@ -1,0 +1,13 @@
+<div class="fixed">
+    <app-navbar (click)="drawer.toggle()"> </app-navbar>
+</div>
+
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
+        <!-- mode="side" position="end" -->
+        <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <div class="example-sidenav-content">
+        <router-outlet></router-outlet>
+    </div>
+</mat-drawer-container>

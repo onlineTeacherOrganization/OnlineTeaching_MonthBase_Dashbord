@@ -1,0 +1,41 @@
+<h2> الطلاب المقفولة</h2>
+<div class="content">
+  <div class="above">
+    <div>
+      <div class="search-container">
+        <input type="text" class="form-control" (input)="Empty()" placeholder="البحث باسم الطالب"
+          [(ngModel)]="searchQuery">
+        <button (click)="search()">البحث</button>
+        <button (click)="clear()" class="form-control" class="clear" *ngIf="searchQuery">مسح</button>
+      </div>
+    </div>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="table">
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>التعديل</th>
+      <td mat-cell *matCellDef="let rowObj">
+        <button type="button" mat-raised-button (click)="openDialog(rowObj)" class="save-button">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="studentName">
+      <th mat-header-cell *matHeaderCellDef>الطالب</th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.studentName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="subjectName">
+      <th mat-header-cell *matHeaderCellDef>الاسبوع</th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.subjectName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lockedCount">
+      <th mat-header-cell *matHeaderCellDef>العدد</th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.lockedCount}} </td>
+    </ng-container>
+    <ng-container matColumnDef="reason">
+      <th mat-header-cell *matHeaderCellDef>السبب</th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.reason}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

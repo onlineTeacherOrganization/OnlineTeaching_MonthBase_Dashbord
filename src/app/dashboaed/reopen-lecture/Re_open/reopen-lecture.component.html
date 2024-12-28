@@ -1,0 +1,34 @@
+<h2> اعادة فتح المحاضرة </h2>
+<div class="content">
+  <table mat-table [dataSource]="dataSource" class="table">
+    <ng-container matColumnDef="studentName">
+      <th mat-header-cell *matHeaderCellDef> اسم الطالب </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.studentName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lectureName">
+      <th mat-header-cell *matHeaderCellDef> المحاضرة </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.lectureName }} </td>
+    </ng-container>
+    <ng-container matColumnDef="reason">
+      <th mat-header-cell *matHeaderCellDef> السبب </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.reason }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> التعديل</th>
+      <td mat-cell *matCellDef="let rowObj">
+        <button type="button" mat-raised-button (click)="AddopenDialog(rowObj)" class="save-button">
+          <mat-icon>checkmark</mat-icon>
+        </button>
+        <button type="button" class="cancel-button" (click)="DeleteDialog(rowObj)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <mat-paginator [length]="Datasubject?.count" [pageSize]="Datasubject?.size" [pageIndex]="Datasubject?.index"
+      [pageSizeOptions]="[5,10, 20, 50, 100]" (page)="pageChanged($event)">
+    </mat-paginator>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

@@ -1,0 +1,60 @@
+<!-- <button mat-raised-button style="color: red;" (click)="openDialog()">اضاف صف دراسي </button> -->
+<h2> الاسئلة {{
+  DataQestion?.name}}</h2>
+<div class="content">
+  <div class="above">
+    <div class="add">
+      <button (click)="AddopenDialog()" class="add-button">اضف سؤال</button>
+    </div>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="table">
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>التعديل</th>
+      <td mat-cell *matCellDef="let rowObj">
+        <button type="button" mat-raised-button (click)="EditopenDialog(rowObj)" class="save-button">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button type="button" class="cancel-button" (click)="DeleteopenDialog(rowObj)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>الرقم</th>
+      <td mat-cell *matCellDef="let rowObj,; let i = index"> {{i+1}} </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>الوصف</th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.description}} </td>
+    </ng-container>
+    <ng-container matColumnDef="imageOrFile">
+      <th mat-header-cell *matHeaderCellDef>الصورة</th>
+      <td mat-cell *matCellDef="let rowObj">
+        <img [src]="Url+rowObj.file" alt="لا يوجد صورة" *ngIf="rowObj.file!=null ">
+        <span *ngIf="rowObj.file==null ">لا يوجد</span>
+        <!-- {{Url+rowObj.file}} -->
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="correctAnswer">
+      <th mat-header-cell *matHeaderCellDef>الاجابة الصحيحة</th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.correctAnswer}} </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="Answer">
+      <th mat-header-cell *matHeaderCellDef>الاجابة </th>
+      <td mat-cell *matCellDef="let rowObj">
+        <mat-form-field>
+          <mat-label>الاجابات</mat-label>
+          <mat-select>
+            <mat-option>{{rowObj.oneAnswer}}</mat-option>
+            <mat-option>{{rowObj.secondAnswer}}</mat-option>
+            <mat-option>{{rowObj.thirdAnswer}}</mat-option>
+            <mat-option>{{rowObj.fourthAnswer}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+   
+      </td>
+    </ng-container> -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

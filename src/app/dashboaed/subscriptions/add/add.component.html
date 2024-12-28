@@ -1,0 +1,21 @@
+<div class="total">
+  <h1 mat-dialog-title> انشاء شهر</h1>
+  <div class="edit-form" mat-dialog-content>
+    <form [formGroup]="SubForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+      <div class="form">
+        <div class="form-group">
+          <label for="name">اسم الشهر :</label>
+          <input type="text" formControlName="name" id="name" name="name">
+        </div>
+        <div class="form-group">
+          <label for="telegpriceeramLink"> السعر </label>
+          <input type="text" id="price" name="price" formControlName="price">
+        </div>
+      </div>
+      <div class="button-group">
+        <button type="button" class="cancel-button" (click)="onNoClick()">خروج</button>
+        <button type="button" class="save-button" (click)="onSubmit()">حفظ</button>
+      </div>
+    </form>
+  </div>
+</div>

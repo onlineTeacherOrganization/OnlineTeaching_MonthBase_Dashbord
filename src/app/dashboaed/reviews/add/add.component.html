@@ -1,0 +1,10 @@
+<div class="total">
+  <h1 mat-dialog-title>اضافه رائ</h1>
+  <div class="edit-form" mat-dialog-content>
+    <input type="text" name="text" #review placeholder="رائ جديد">
+    <div class="button-group" mat-dialog-actions>
+      <button type="button" class="cancel-button" mat-button mat-dialog-close (click)="onNoClick()">خروج</button>
+      <button type="button" mat-button class="save-button" (click)="onSubmit(review.value)">حفظ</button>
+    </div>
+  </div>
+</div>

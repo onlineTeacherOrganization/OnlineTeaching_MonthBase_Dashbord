@@ -1,0 +1,88 @@
+<div class="container add">
+  <div class="container mt-5">
+    <div class="Shaoes">
+      <div class="col-md-5">
+        <div class="mb-3 text-center">
+          <div>
+            <canvas #myChartCanvas width="300" height="200"></canvas>
+          </div>
+          <div>
+            <h3>العدد</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="mb-3 text-center">
+          <div>
+            <canvas #myChartCanvas2 width="300" height="200"></canvas>
+          </div>
+          <div>
+            <h3>التفاصيل</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <h2>المعلومات</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>الرقم</th>
+          <th>الاسم</th>
+          <th>العدد</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <tr>
+          <td>1</td>
+          <td>الطلاب</td>
+          <td>{{ Student?.count}}</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>الامتحانات</td>
+          <td>{{Exams?.count}}</td>
+        </tr>
+
+        <tr>
+          <td>3</td>
+          <td>الشهور</td>
+          <td>{{Subjects?.count}}</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>الاسابيع</td>
+          <td>{{SubSubjects?.count}}</td>
+        </tr>
+        <tr>
+        <tr>
+          <td>5</td>
+          <td>المحاضرات</td>
+          <td>{{Lectures?.count}}</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>جميع الاشتركات</td>
+          <td>{{ AllSubscribtion?.count}}</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>جميع عدم الاشتراك</td>
+          <td>{{ NoComfirmSubscribtion?.length}}</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>اعادة فتح الامتحانات</td>
+          <td>{{ ReExams?.count}}</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>اعادة المحاضرات </td>
+          <td>{{ReopenLectures?.count}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

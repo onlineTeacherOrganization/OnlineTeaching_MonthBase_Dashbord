@@ -1,0 +1,20 @@
+
+
+.EditForm {
+  padding: 10px;
+
+  direction: rtl;
+}
+@media (max-width:600px) {
+  .EditForm {
+    padding: 0px;
+    direction: rtl;
+  }
+}
+h1 {
+  text-align: center;
+}
+.autocomplete-clear-icon {
+  left: 5px; /* Adjust the value as needed */
+  right: auto; /* Ensure it doesn't conflict with right positioning */
+}

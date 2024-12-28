@@ -1,0 +1,15 @@
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width:700px) {
+  .top {
+    display: block;
+  }
+}
+
+.download {
+  width: 50%;
+}

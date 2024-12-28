@@ -1,0 +1,311 @@
+<div class="d-flex justify-content-center text-center">
+  <h2>الاعدادات</h2>
+</div>
+<mat-accordion>
+  <mat-expansion-panel class="my-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        البيانات الشخصيه
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="container add">
+      <h1>تعديل </h1>
+      <div class="container mt-5">
+        <form [formGroup]="formsettings" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="name">الاسم</label>
+                <input type="text" class="form-control" formControlName="Name" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <div
+                  *ngIf="formsettings.controls['name']?.touched  && formsettings.controls['name']?.errors?.['required']"
+                  class="text-danger">
+                  ادخل الوصف
+                </div>
+                <div class="text-danger"
+                  *ngIf="invalid && formsettings.controls['name']?.touched ==false&& formsettings.controls['name']?.errors?.['required']">
+                  ادخل الوصف
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="Description">الوصف</label>
+                <input type="Description" class="form-control" id="email" formControlName="Description"
+                  name="Description" required>
+              </div>
+              <div class="form-group">
+                <div
+                  *ngIf="formsettings.controls['Description']?.touched  && formsettings.controls['Description']?.errors?.['required']"
+                  class="text-danger">
+                  ادخل الوصف
+                </div>
+                <div class="text-danger"
+                  *ngIf="invalid && formsettings.controls['Description']?.touched ==false&& formsettings.controls['Description']?.errors?.['required']">
+                  ادخل الوصف
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="Address">العنوان</label>
+                <input id="Address" class="form-control" name="Address" formControlName="Address" required>
+              </div>
+              <div class="form-group">
+                <div
+                  *ngIf="formsettings.controls['Address']?.touched  && formsettings.controls['Address']?.errors?.['required']"
+                  class="text-danger">
+                  ادخل العنوان
+                </div>
+                <div class="text-danger"
+                  *ngIf="invalid && formsettings.controls['Address']?.touched ==false&& formsettings.controls['Address']?.errors?.['required']">
+                  ادخل العنوان
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="PhoneNumber">رقم الهانف</label>
+                <input type="text" class="form-control" id="PhoneNumber" formControlName="PhoneNumber"
+                  name="PhoneNumber" required>
+              </div>
+              <div class="form-group">
+                <div
+                  *ngIf="formsettings.controls['PhoneNumber']?.touched  && formsettings.controls['PhoneNumber']?.errors?.['required']"
+                  class="text-danger">
+                  ادخل رقم الهانف
+                </div>
+                <div class="text-danger"
+                  *ngIf="invalid && formsettings.controls['PhoneNumber']?.touched ==false&& formsettings.controls['PhoneNumber']?.errors?.['required']">
+                  ادخل رقم الهانف
+                </div>
+                <div class="text-danger" *ngIf="formsettings.controls['PhoneNumber']?.errors?.['minlength']">
+                  الرقم اصغر من 11 يرجاء يكون 11 رقما
+                </div>
+                <div class="text-danger" *ngIf="formsettings.controls['PhoneNumber']?.errors?.['maxlength']">
+                  الرقم اكثر من 11 يرجاء يكون 11 رقما
+                </div>
+                <div class="text-danger" *ngIf="formsettings.controls['PhoneNumber']?.errors?.['pattern']">
+                  بداية الرقم 01
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="SecretarialPhoneNumber">رقم السكرتاريه</label>
+                <input type="text" class="form-control" id="SecretarialPhoneNumber"
+                  formControlName="SecretarialPhoneNumber" name="SecretarialPhoneNumber" required>
+              </div>
+              <div class="form-group">
+                <div
+                  *ngIf="formsettings.controls['SecretarialPhoneNumber']?.touched  && formsettings.controls['SecretarialPhoneNumber']?.errors?.['required']"
+                  class="text-danger">
+                  ادخل رقم السكرتاريه
+                </div>
+                <div class="text-danger"
+                  *ngIf="invalid && formsettings.controls['SecretarialPhoneNumber']?.touched ==false&& formsettings.controls['SecretarialPhoneNumber']?.errors?.['required']">
+                  ادخل رقم السكرتاريه
+                </div>
+                <div class="text-danger" *ngIf="formsettings.controls['SecretarialPhoneNumber']?.errors?.['minlength']">
+                  الرقم اصغر من 11 يرجاء يكون 11 رقما
+                </div>
+                <div class="text-danger" *ngIf="formsettings.controls['SecretarialPhoneNumber']?.errors?.['maxlength']">
+
+                  الرقم اكثر من 11 يرجاء يكون 11 رقما
+                </div>
+                <div class="text-danger" *ngIf="formsettings.controls['SecretarialPhoneNumber']?.errors?.['pattern']">
+                  ادخل
+                  بداية الرقم 01
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="VodafonCachPhoneNumber">رقم قودافون كاش</label>
+                <input type="text" class="form-control" id="VodafonCachPhoneNumber"
+                  formControlName="VodafonCachPhoneNumber" name="VodafonCachPhoneNumber" required>
+              </div>
+              <div class="form-group">
+                <div
+                  *ngIf="formsettings.controls['VodafonCachPhoneNumber']?.touched  && formsettings.controls['VodafonCachPhoneNumber']?.errors?.['required']"
+                  class="text-danger">
+                  ادخل رقم قودافون كاش
+                </div>
+                <div class="text-danger"
+                  *ngIf="invalid && formsettings.controls['VodafonCachPhoneNumber']?.touched ==false&& formsettings.controls['VodafonCachPhoneNumber']?.errors?.['required']">
+                  ادخل رقم قودافون كاش
+                </div>
+                <div class="text-danger" *ngIf="formsettings.controls['VodafonCachPhoneNumber']?.errors?.['minlength']">
+                  الرقم اصغر من 11 يرجاء يكون 11 رقما
+                </div>
+                <div class="text-danger" *ngIf="formsettings.controls['VodafonCachPhoneNumber']?.errors?.['maxlength']">
+                  الرقم اكثر من 11 يرجاء يكون 11 رقما
+                </div>
+                <div class="text-danger" *ngIf="formsettings.controls['VodafonCachPhoneNumber']?.errors?.['pattern']">
+                  ادخل
+                  بداية الرقم 01
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="ActivationSubscriptionPhoneNumber">رقم الاشتراك</label>
+                <input type="text" class="form-control" id="ActivationSubscriptionPhoneNumber"
+                  formControlName="ActivationSubscriptionPhoneNumber" name="ActivationSubscriptionPhoneNumber" required>
+              </div>
+              <div class="form-group">
+                <div
+                  *ngIf="formsettings.controls['ActivationSubscriptionPhoneNumber']?.touched  && formsettings.controls['ActivationSubscriptionPhoneNumber']?.errors?.['required']"
+                  class="text-danger">
+                  ادخل رقم قودافون كاش
+                </div>
+                <div class="text-danger"
+                  *ngIf="invalid && formsettings.controls['ActivationSubscriptionPhoneNumber']?.touched ==false&& formsettings.controls['ActivationSubscriptionPhoneNumber']?.errors?.['required']">
+                  ادخل رقم قودافون كاش
+                </div>
+                <div class="text-danger"
+                  *ngIf="formsettings.controls['ActivationSubscriptionPhoneNumber']?.errors?.['minlength']">
+                  الرقم اصغر من 11 يرجاء يكون 11 رقما
+                </div>
+                <div class="text-danger"
+                  *ngIf="formsettings.controls['ActivationSubscriptionPhoneNumber']?.errors?.['maxlength']">
+                  الرقم اكثر من 11 يرجاء يكون 11 رقما
+                </div>
+                <div class="text-danger"
+                  *ngIf="formsettings.controls['ActivationSubscriptionPhoneNumber']?.errors?.['pattern']"> ادخل
+                  بداية الرقم 01
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="FacebookLink">رابط الفيسبوك</label>
+                <input type="text" class="form-control" id="FacebookLink" name="FacebookLink"
+                  formControlName="FacebookLink" required>
+              </div>
+              <div class="form-group">
+                <div
+                  *ngIf="formsettings.controls['FacebookLink']?.touched  && formsettings.controls['FacebookLink']?.errors?.['required']"
+                  class="text-danger">
+                  ادخل رابط الفيسبوك
+                </div>
+                <div class="text-danger"
+                  *ngIf="invalid && formsettings.controls['FacebookLink']?.touched ==false&& formsettings.controls['FacebookLink']?.errors?.['required']">
+                  ادخل رابط الفيسبوك
+                </div>
+                <div class="text-danger" *ngIf="formsettings.controls['FacebookLink']?.errors?.['pattern']">
+                  ادخل الرابط صحيحا
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="WhatsappLink">رابط الوتساب</label>
+                <input type="text" class="form-control" id="WhatsappLink" name="WhatsappLink"
+                  formControlName="WhatsappLink" required>
+              </div>
+              <div class="form-group">
+                <div
+                  *ngIf="formsettings.controls['WhatsappLink']?.touched  && formsettings.controls['WhatsappLink']?.errors?.['required']"
+                  class="text-danger">
+                  ادخل رابط الفيسبوك
+                </div>
+                <div class="text-danger"
+                  *ngIf="invalid && formsettings.controls['WhatsappLink']?.touched ==false&& formsettings.controls['WhatsappLink']?.errors?.['required']">
+                  ادخل رابط الفيسبوك
+                </div>
+                <div class="text-danger" *ngIf="formsettings.controls['WhatsappLink']?.errors?.['pattern']">
+                  الرابط صحيحا
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="TelegramLink">رابط التلجرام</label>
+                <input type="text" class="form-control" id="TelegramLink" name="TelegramLink"
+                  formControlName="TelegramLink" required>
+              </div>
+              <div class="form-group">
+                <div
+                  *ngIf="formsettings.controls['TelegramLink']?.touched  && formsettings.controls['TelegramLink']?.errors?.['required']"
+                  class="text-danger">
+                  ادخل رابط الفيسبوك
+                </div>
+                <div class="text-danger"
+                  *ngIf="invalid && formsettings.controls['TelegramLink']?.touched ==false&& formsettings.controls['TelegramLink']?.errors?.['required']">
+                  ادخل رابط الفيسبوك
+                </div>
+                <div class="text-danger" *ngIf="formsettings.controls['TelegramLink']?.errors?.['pattern']">
+                  ادخل الرابط صحيحا
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="FormFile">رفع الصورة</label>
+                <input type="file" class="form-control" id="FormFile" (change)="onFileSelect($event)" name="FormFile"
+                  required>
+                <p style="color: red;">{{Errorimage}}</p>
+                <p>{{ImageName}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3  d-flex justify-content-center">
+            <button type="submit" class=" btn btn-primary mx-3 ">حفظ</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel class="my-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        تغير كلمة المرور
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="container add">
+      <div class="container mt-5">
+        <form [formGroup]="ChangePassword" (ngSubmit)="onSubmit2()" enctype="multipart/form-data">
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="currentPassword"> كلمة السر الحالية</label>
+                <input type="password" class="form-control" id="currentPassword" formControlName="currentPassword"
+                  name="currentPassword" required>
+              </div>
+              <div class="form-group">
+                <div
+                  *ngIf="formsettings.controls['currentPassword']?.touched  && formsettings.controls['currentPassword']?.errors?.['required']"
+                  class="text-danger">
+                  ادخل كلمة السر الحالية
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="newPassword"> كلمة السر الجديدة</label>
+                <input type="password" class="form-control" id="newPassword" formControlName="newPassword"
+                  name="newPassword" required>
+              </div>
+              <div class="form-group">
+                <div
+                  *ngIf="formsettings.controls['newPassword']?.touched  && formsettings.controls['newPassword']?.errors?.['required']"
+                  class="text-danger">
+                  ادخل كلمة السر الجديدة
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="mt-3  d-flex justify-content-center">
+            <button type="submit" class=" btn btn-primary mx-3 ">تعديل كلمة المرور</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

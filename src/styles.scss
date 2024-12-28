@@ -1,0 +1,335 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$dashboard-primary: mat.define-palette(mat.$indigo-palette);
+$dashboard-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$dashboard-warn: mat.define-palette(mat.$red-palette);
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$dashboard-theme: mat.define-light-theme((color: (primary: $dashboard-primary, accent: $dashboard-accent, warn: $dashboard-warn, ), ));
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($dashboard-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'MyFont';
+  src: url('./assets/Fonts/alfont_com_AlFont_com_DIN-NEXT-LT-W23-MEDIUM.otf');
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'MyFont' !important;
+  direction: rtl;
+}
+
+:root {
+  --maincolor: linear-gradient(269.62deg, #59c0c5 1.91%, #2b8099 191.6%);
+  --prime: #59c0c5;
+  --orange: #f6be2a;
+  --main-font-color: #556987;
+  --white: #ffffff;
+  --prime-dark: #2b8099;
+  --gray-500: #556987;
+  --dark: #02070d;
+}
+
+mat-paginator {
+  direction: ltr !important;
+}
+
+.mat-mdc-list-base {
+  padding-top: 15px !important;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: large;
+  font-weight: bolder;
+}
+
+.mat-mdc-paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+}
+
+.mat-mdc-list-item.mdc-list-item--with-leading-avatar.mdc-list-item--with-one-line,
+.mat-mdc-list-item.mdc-list-item--with-leading-checkbox.mdc-list-item--with-one-line,
+.mat-mdc-list-item.mdc-list-item--with-leading-icon.mdc-list-item--with-one-line {
+  height: 45px;
+}
+
+
+.cancel-button,
+.save-button,
+.lock-button {
+  padding: 1px;
+  margin: 2px;
+  border: none;
+  border-radius: 4px;
+  font-size: larger;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-button {
+  background-color: var(--prime);
+  color: #fff;
+  font-size: larger;
+  border: none;
+  padding: 1x;
+  margin-right: 5px;
+  border-radius: 4px;
+}
+
+
+.save-button {
+  background-color: var(--prime);
+}
+
+.cancel-button:hover,
+.save-button:hover,
+.lock-button {
+  background-color: #555;
+}
+
+
+
+
+.success-toast {
+  background-color: var(--prime) !important;
+  color: #ffffff;
+}
+
+.error-toast {
+  background-color: #d32f2f;
+  color: #ffffff;
+}
+
+
+
+.button-group {
+  display: flex;
+  // justify-content: space-around;
+}
+
+textarea {
+  width: 100%;
+}
+
+.cancel-button {
+  background-color: #f44336;
+}
+
+.lock-button {
+  background-color: var(--prime);
+
+}
+
+.total {
+  display: flex;
+  padding: 30px;
+  text-align: right;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.add-button {
+  background-color: var(--prime);
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+
+.edit-form input {
+  width: 100%;
+  // padding: 10px;
+  direction: rtl;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+ng-container,
+td,
+th {
+  text-align: center !important;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input[type="text"] {
+  padding: 5px;
+  margin: 5px;
+}
+
+.search-container button {
+  background-color: var(--prime);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 15%;
+  padding: 5px;
+  margin: 5px 5px;
+}
+
+h2 {
+  padding: 20px 20px 10px 20px;
+  text-align: center;
+}
+
+.search-container label {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.above {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+mat-list-item:hover {
+  background-color: #ddd;
+  cursor: pointer !important;
+}
+
+
+
+@media (max-width: 480px) {
+  .above {
+    display: block !important;
+  }
+}
+
+.form {
+  display: grid;
+  padding: 0 10px 0 10px;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.mat-icon {
+  margin: 5px !important;
+}
+
+.clear {
+  background-color: #ddd !important;
+  margin: 20px;
+  padding: 10px;
+}
+
+.Sub {
+  padding: 10px;
+}
+
+.Sub h1,
+.total h1,
+.add h1 {
+  direction: rtl;
+}
+
+.btnConCam {
+  text-align: left;
+}
+
+.add h1 {
+  text-align: center;
+}
+
+
+.button-group {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  direction: ltr;
+}
+
+.add {
+  direction: rtl;
+  padding: 10px;
+}
+
+.cdk-global-overlay-wrapper {
+  overflow: auto;
+  pointer-events: auto; // needed for chrome but prevents backdrop click close
+}
+
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  margin-right: 0px !important;
+}
+
+img {
+  max-height: 50px !important;
+}
+
+.add-button2 {
+
+  background-color: var(--prime-dark);
+}
+
+.add-button3 {
+  background-color: var(--dark);
+}
+
+.ng-autocomplete {
+  width: auto !important;
+}
+
+.autocomplete-container .input-container .x {
+  position: absolute;
+  margin: auto;
+  left: 2% !important;
+  right: auto !important;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.x {
+  position: absolute;
+  margin: auto;
+  left: 2% !important;
+  right: auto !important;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+}

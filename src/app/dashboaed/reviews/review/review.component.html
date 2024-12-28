@@ -1,0 +1,33 @@
+<h2> الاراء</h2>
+<!-- <button (click)="openDialog()" class="add-button">اضافة رائ</button> -->
+<!-- <button (click)="post()">post</button> -->
+<div class="content">
+  <table mat-table [dataSource]="dataSource" class="table" matSort>
+    <ng-container matColumnDef="isAppear">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>التاكيد</th>
+      <td mat-cell *matCellDef="let rowObj">
+        <button type="button" class="save-button" [hidden]="rowObj.isAppear" (click)="appear(rowObj)">
+          <mat-icon>check</mat-icon>
+        </button>
+        <button type="button" class="cancel-button" (click)="deletefun(rowObj)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+
+    </ng-container>
+    <!-- <button type="button"  mat-raised-button (click)="openDialog(level)" ><mat-icon>edit</mat-icon> </button></td> -->
+    <ng-container matColumnDef="studentName">
+      <th mat-header-cell *matHeaderCellDef> اسم الطالب </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.studentName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> الوصف </th>
+      <td mat-cell *matCellDef="let rowObj"> {{rowObj.description}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="DataLevel?.count" [pageSize]="DataLevel?.size" [pageIndex]="DataLevel?.index"
+    [pageSizeOptions]="[5,10, 20, 50, 100]" (page)="pageChanged($event)">
+  </mat-paginator>
+</div>
