@@ -1,6 +1,6 @@
 import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -36,12 +36,17 @@ export class AuthService {
     return this.userSubject.value;
   }
   login(username: string, password: string) {
+    const httpHeaders: HttpHeaders = new HttpHeaders({
+      'Access-Control-Allow-Origin':'*',
+    });
+
+    // :,
     console.log(username)
     return this.http
       .post<any>(`${environment.BaseUrl}Auth/Login`, {
         "email": username,
         "password": password
-      })
+      },{headers:httpHeaders})
       .pipe(
         map((token) => {
           console.log(token)

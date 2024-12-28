@@ -1,0 +1,9 @@
+{
+    "/api": {
+      "target": "https://hardcore-moore.162-220-162-242.plesk.page/E-Learning/",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
+  

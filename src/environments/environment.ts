@@ -3,6 +3,7 @@ export const environment = {
   PhotoUrl: "https://hardcore-moore.162-220-162-242.plesk.page/",
 
 };
+//  PhotoUrl: "https://strange-jennings.162-220-162-242.plesk.page/",
 //http://menanabel2-001-site1.atempurl.com/swagger/index.html
 //BaseUrl: "http://hossamfathi-001-site1.atempurl.com/E-learning/"
 
