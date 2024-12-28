@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdashboard=self.webpackChunkdashboard||[]).push([[781],{781:(O,n,a)=>{a.r(n),a.d(n,{LateStudentModule:()=>P});var l=a(6895),_=a(7974),r=a(7155),o=a(7392),E=a(4650);let P=(()=>{const t=class{};let s=t;return t.\u0275fac=function(D){return new(D||t)},t.\u0275mod=E.oAB({type:t}),t.\u0275inj=E.cJS({imports:[l.ez,r.p0,_.TU,o.Ps]}),s})()}}]);

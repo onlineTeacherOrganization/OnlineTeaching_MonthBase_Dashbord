@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdashboard=self.webpackChunkdashboard||[]).push([[630],{4630:(m,E,a)=>{a.r(E),a.d(E,{QuziTestModule:()=>D});var s=a(6895),l=a(9549),o=a(4006),P=a(529),r=a(7392),_=a(4650);let D=(()=>{const t=class{};let n=t;return t.\u0275fac=function(O){return new(O||t)},t.\u0275mod=_.oAB({type:t}),t.\u0275inj=_.cJS({imports:[s.ez,l.lN,o.UX,P.JF,r.Ps]}),n})()}}]);
